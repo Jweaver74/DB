@@ -30,6 +30,22 @@ app.get('/', (req, res) => {
             },
             );
 
+            app.post('/api/book', (req, res) => {
+                const body = req.body;
+                const book = {
+                    id: body.id,
+                    title: body.title,
+                    isbn: body.isbn,
+                    author:{
+                        id: body.author.id,
+                        firstname: body.author.firstname,
+                        lastname: body.author.lastname,
+                    },
+                };
+                books.push(book);
+                res.send(books);
+                });
+
             app.listen(port, () => {
                 console.log(`Example app listening at http://localhost:${port}`);
                 });
